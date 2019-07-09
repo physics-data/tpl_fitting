@@ -9,17 +9,17 @@ import numpy as np
 # sys.argv[2] is output file
 data = json.load(open(sys.argv[1]))
 
-# array of dict {"x" : 1.23, "y": 4.56}
-points = data['points']
+# TODO: get array of known points data
+points = data[?]
 
-# array of x
-predict = data['predict']
+# TODO: get array of points to predict
+predict = data[?]
 
 # TODO: construct matrix A and vector b
 A = np.array([[]])
 b = np.array([])
 
-# TODO: get coefficients
+# TODO: calculate coefficients of the 4-order curve wth least square method
 x = np.array([])
 
 # TODO: predict points
