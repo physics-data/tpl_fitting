@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import sys, time, os, subprocess, time, shutil, json, h5py
+import sys, time, os, subprocess, time, shutil, json
 import numpy as np
 
 testcases = [
