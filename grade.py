@@ -60,7 +60,7 @@ if __name__ == '__main__':
                         if 1 < a and a < 3:
                             shape[9 - round(a * 10)][round(pre * 20) + 20] = 1
 
-                    if np.linalg.norm(np.array(std) - np.array(ans)) > 0.01:
+                    if np.linalg.norm(np.array(std) - np.array(ans)) > 1e-6:
                         message = 'Data mismatch: should be \n\'{}\'\n, get \n\'{}\''.format(std, ans)
                         success = False
                 except:
