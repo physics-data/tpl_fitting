@@ -5,10 +5,10 @@ import sys, time, os, subprocess, time, shutil, json, h5py
 import numpy as np
 
 testcases = [
-    ('data/interpolation_1.in', 'data/interpolation_1.out'),
-    ('data/interpolation_2.in', 'data/interpolation_2.out'),
-    ('data/interpolation_3.in', 'data/interpolation_3.out'),
-    ('data/interpolation_4.in', 'data/interpolation_4.out'),
+    ('data/fitting_1.in', 'data/fitting_1.out'),
+    ('data/fitting_2.in', 'data/fitting_2.out'),
+    ('data/fitting_3.in', 'data/fitting_3.out'),
+    ('data/fitting_4.in', 'data/fitting_4.out'),
 ]
 
 shape = np.zeros((18, 41))
@@ -19,7 +19,7 @@ if __name__ == '__main__':
         print("Please use python3")
         exit(1)
 
-    program_file = 'interpolation.py'
+    program_file = 'fitting.py'
     if len(sys.argv) > 1: 
         program_file = sys.argv[1]
     
