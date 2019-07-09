@@ -10,9 +10,9 @@
 
 1. 读取 JSON 文件（路径为sys.argv[1]），得到在这条四次曲线上的几个点的坐标（输入中 "points" 的内容）
 2. 按照最小二乘法（下面提供了描述），拟合出一个四次曲线
-3. 把输入数据中指定的点（输入中 "predict" 的内容）的坐标代入拟合出来的四次曲线，然后把拟合出来的坐标输出到 JSON 文件（路径为 sys.argv[2]）
+3. 把输入数据中指定的点（输入中 "predict" 的内容）作为 x 坐标代入拟合出来的四次曲线，然后把拟合出来的坐标输出到 JSON 文件（路径为 sys.argv[2]）
 
-项目中的 `interpolation.py` 已经提供了必要的代码和提示，已经提供了部分输入和输出的代码以供参考。和之前的题目一样，可以通过执行 `python3 hd5.py [input_file] [output_file]` 来进行数据的处理，但注意不要把 `data` 目录下的文件覆盖。
+项目中的 `interpolation.py` 已经提供了必要的代码和提示，已经提供了部分输入和输出的代码以供参考。和之前的题目一样，可以通过执行 `python3 fitting.py [input_file] [output_file]` 来进行数据的处理，但注意不要把 `data` 目录下的文件覆盖。
 
 如果忘记了最小二乘法的矩阵形式，这里是一段简单的描述：
 
@@ -24,11 +24,11 @@ x_1^4a+x_1^3b+x_1^2c+x_1d+e=y_1 \\
 x_{m_i}^4a+x_{m_i}^3b+x_{m_i}^2c+x_{m_i}d+e=y_{m_i!}
 \end{cases}
 $$
-如果设 $\mathbf{A}_{ij}=x_{i}^{5-j}$，$\mathbf{x}=[a\,b\,c\,d\,e]^\intercal$，$\mathbf{b}=[y_1\,\dots\,y_{m_i}]^\intercal$，上述方程组就等价于矩阵方程 $\mathbf{Ax=b}$。这通常不是一个可以直接求解的方程组，因此我们通常使用最小二乘法求解，即求解方程 $\mathbf{A^\intercal Ax=A^\intercal b}$。这总是一个具有唯一解的方程组，并且得到的解具有最小的均方差距离，我们在此不加以证明。而在得到最小二乘解 $\tilde{\mathbf{x}}=[\tilde{a}\,\tilde{b}\,\tilde{c}\,\tilde{d}\,\tilde{e}]^\intercal$ 后，对于任意给定的 $x$，我们就能计算出一个 $y$，这就是插值的过程。
+如果设 $\mathbf{A}_{ij}=x_{i}^{5-j}$，$\mathbf{x}=[a\,b\,c\,d\,e]^\intercal$，$\mathbf{b}=[y_1\,\dots\,y_{m_i}]^\intercal$，上述方程组就等价于矩阵方程 $\mathbf{Ax=b}$。这通常不是一个可以直接求解的方程组，因此我们通常使用最小二乘法求解，即求解方程 $\mathbf{A^\intercal Ax=A^\intercal b}$。这总是一个具有唯一解的方程组，并且得到的解具有最小的均方差距离，我们在此不加以证明。而在得到最小二乘解 $\tilde{\mathbf{x}}=[\tilde{a}\,\tilde{b}\,\tilde{c}\,\tilde{d}\,\tilde{e}]^\intercal$ 后，对于任意给定的 $x$，我们就能计算出一个 $y$，这就是拟合的过程。
 
-如果阅读 LaTeX 格式的数学公式有困难，可以到 GitHub 上查看，也可以查看下面的图片：
+如果阅读 LaTeX 格式的数学公式有困难，可以到 GitHub 上查看下面的图片：
 
-![这是一个图片，请上GitHub看](interpolation.png)
+![这是一个图片，请上GitHub看](fitting.png)
 
 ## 样例与评分
 
@@ -44,3 +44,8 @@ $$
 * 白盒 20 分：代码风格与 Git 使用 20 分（包括恰当注释、合理命名、提交日志等）
 
 助教以 deadline 前 GitHub 上最后一次提交为准进行评测。
+
+## 提示
+
+1. 计算矩阵的转置，可以通过 '.T' 来计算
+2. 计算矩阵的逆，可以通过 'np.linalg.inv' 来计算
