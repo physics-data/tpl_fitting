@@ -79,14 +79,15 @@ if __name__ == '__main__':
                     print('       : your program exited with:')
                     sys.stdout.buffer.write(stderr)
 
-        print('Current shape (if you have implemented correcly, you should see a heart):')
-        for row in shape:
-            for ele in row:
-                if ele > 0:
-                    print('#', end = '')
-                else:
-                    print('.', end = '')
-            print()
+        if os.isatty(1):
+            print('Current shape (if you have implemented correcly, you should see a heart):')
+            for row in shape:
+                for ele in row:
+                    if ele > 0:
+                        print('#', end = '')
+                    else:
+                        print('.', end = '')
+                print()
 
         
         
